@@ -2,18 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import Home from "./pages/Home";
 // import Dashboard from "./pages/Dashboard";
-import SignupPage from './pages/SignupPage';
+import SignupPage from "./pages/SignupPage";
+import PatientDashboad from "./pages/PatientDashboad";
 
 const App = () => {
   return (
     <ThemeProvider>
-      <Home />
       <Router>
         <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/PatientDashboad" element={<PatientDashboad />} />
           <Route path="/" element={<LoginPage />} />
           {/* <Route path="/dashboard/:id" element={<Dashboard />} /> */}
         </Routes>
