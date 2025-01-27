@@ -17,12 +17,12 @@ const LoginPage = () => {
     try {
       const response = await loginUser(userData); // Call the login API
       console.log("Login success:", response);
-      
+
       // You can redirect after a successful login, for example:
       // navigate('/todoPage'); // If you're using React Router for navigation
-      
+
       // Or simply show a success message
-      alert('Login successful!');
+      alert("Login successful!");
     } catch (error) {
       setError("Invalid credentials. Please try again.");
     } finally {
@@ -55,7 +55,9 @@ const LoginPage = () => {
           />
 
           {/* Show error message if exists */}
-          {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
+          {error && (
+            <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+          )}
 
           {/* Submit Button */}
           <button
