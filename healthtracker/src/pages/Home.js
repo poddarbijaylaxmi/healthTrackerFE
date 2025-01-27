@@ -8,7 +8,7 @@ import PatientTable from '../components/PatientTableComponent';
 const Home = () => {
   const patients = [
     {
-      name: 'John Doe',
+      name: 'Marjita Chakraborty',
       disease: 'Hypertension',
       bp: '120/80',
       status: 'Stable',
