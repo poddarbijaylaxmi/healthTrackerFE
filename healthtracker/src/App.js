@@ -14,7 +14,6 @@ import Home from "./pages/ProviderDashboard";
 const App = () => {
   return (
     <ThemeProvider>
-      {/* <Home /> */}
       <ProviderDashboard />
       <Router>
         <Routes>
