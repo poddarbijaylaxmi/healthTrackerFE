@@ -66,13 +66,12 @@ const LoginPage = () => {
             <p className="text-red-500 text-sm text-center mt-2">{error}</p>
           )}
 
-          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200"
             disabled={loading} // Disable button while loading
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading ? "Logging in.." : "Login"}
           </button>
         </form>
 

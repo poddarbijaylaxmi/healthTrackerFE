@@ -13,6 +13,22 @@ const PatientTable = ({ patients }) => {
     navigate("/patientdashboard");
   }
 
+  //to be integrated with backend. need to add base url once geenrated.
+  // useEffect(() => {
+  //   const fetchPatients = async () => {
+  //     try {
+  //       const response = await fetch( "/patients");
+  //       const data = await response.json();
+  //       setPatients(data);
+  //       setVisiblePatients(data.slice(0, 10));
+  //     } catch (error) {
+  //       console.error("Error fetching patients:", error);
+  //     }
+  //   };
+
+  //   fetchPatients();
+  // }, []);
+
   const fetchMorePatients = () => {
     if (visiblePatients.length >= patients.length) {
       setHasMore(false);
