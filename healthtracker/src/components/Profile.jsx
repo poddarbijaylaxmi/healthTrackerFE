@@ -21,6 +21,7 @@ const Profile = () => {
         });
         if (response.ok) {
           console.log("Profile updated successfully");
+          alert("Profile updated successfully");
         } else {
           console.error("Failed to update profile");
         }
@@ -93,12 +94,7 @@ const Profile = () => {
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
-        {/* <button
-          type="submit"
-          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-        >
-          Update Profile
-        </button> */}
+
         <button
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
