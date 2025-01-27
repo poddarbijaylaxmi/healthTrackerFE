@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Profile = () => {
   const [profile, setProfile] = useState({
@@ -7,6 +7,34 @@ const Profile = () => {
     phone: "9902055676",
     address: "Bangalore, India",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const updateProfile = async () => {
+      try {
+        const response = await fetch("/update-profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(profile),
+        });
+        if (response.ok) {
+          console.log("Profile updated successfully");
+        } else {
+          console.error("Failed to update profile");
+        }
+      } catch (error) {
+        console.error("Error updating profile:", error);
+      } finally {
+        setIsSubmitting(false);
+      }
+    };
+
+    if (isSubmitting) {
+      updateProfile();
+    }
+  }, [isSubmitting, profile]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -65,11 +93,18 @@ const Profile = () => {
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
-        <button
+        {/* <button
           type="submit"
           className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
         >
           Update Profile
+        </button> */}
+        <button
+          type="submit"
+          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Updating..." : "Update Profile"}
         </button>
       </form>
     </div>
