@@ -14,7 +14,6 @@ import Home from "./pages/ProviderDashboard";
 const App = () => {
   return (
     <ThemeProvider>
-      <ProviderDashboard />
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />

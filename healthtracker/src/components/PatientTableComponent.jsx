@@ -1,10 +1,17 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { useNavigate } from "react-router-dom";
+
 
 const PatientTable = ({ patients }) => {
+  const navigate = useNavigate();
+
   const [visiblePatients, setVisiblePatients] = useState(patients.slice(0, 10));
   const [hasMore, setHasMore] = useState(true);
+  const handleNavigation = () => {
+    navigate("/patientdashboard");
+  }
 
   //to be integrated with backend. need to add base url once geenrated.
   // useEffect(() => {
@@ -58,7 +65,7 @@ const PatientTable = ({ patients }) => {
               <th className="py-2 px-4 border-b">Sugar</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody onClick={() => handleNavigation()}>
             {visiblePatients.map((patient, index) => (
               <tr key={index}>
                 <td className="py-2 px-4 border-b">{patient.name}</td>
