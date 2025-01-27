@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import { ThemeProvider } from './contexts/ThemeContext';
 import SignupPage from './pages/SignupPage';
+import PatientDashboad from './pages/PatientDashboad';
 
 
 const App = () => {
@@ -11,8 +12,9 @@ const App = () => {
     <ThemeProvider>
       <Router>
         <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/signup" element={<SignupPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          <Route path="/PatientDashboad" element={<PatientDashboad />} />
           <Route path="/" element={<LoginPage />} />
         </Routes>
       </Router>
