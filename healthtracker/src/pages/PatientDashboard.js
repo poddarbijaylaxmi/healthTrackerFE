@@ -22,6 +22,7 @@ ChartJS.register(
 );
 
 import { Card, CardHeader, CardContent } from "../components/ui/card";
+import HamburgerMenu from "../components/HamburgerMenu";
 
 const PatientDashboard = () => {
   const healthMetrics = [
@@ -69,52 +70,54 @@ const PatientDashboard = () => {
   ];
 
   return (
-    <div className="container mx-auto p-4 space-y-6">
-      <h1 className="text-2xl font-bold text-center">Patient Dashboard</h1>
+    <>
+      <div className="container mx-auto p-4 space-y-6">
+        <h1 className="text-2xl font-bold text-center">Patient Dashboard</h1>
 
-      {/* Essential Metrics */}
-      <Card>
-        <CardHeader>
-          <h2 className="text-xl font-semibold">Essential Metrics</h2>
-        </CardHeader>
-        <CardContent>
-          <ul className="space-y-2">
-            {healthMetrics.map((metric, index) => (
-              <li key={index} className="flex justify-between">
-                <span>{metric.name}</span>
-                <span className="font-medium">{metric.value}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+        {/* Essential Metrics */}
+        <Card>
+          <CardHeader>
+            <h2 className="text-xl font-semibold">Essential Metrics</h2>
+          </CardHeader>
+          <CardContent>
+            <ul className="space-y-2">
+              {healthMetrics.map((metric, index) => (
+                <li key={index} className="flex justify-between">
+                  <span>{metric.name}</span>
+                  <span className="font-medium">{metric.value}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
 
-      {/* Chart for Recent Trends */}
-      <Card>
-        <CardHeader>
-          <h2 className="text-xl font-semibold">Recent Trends</h2>
-        </CardHeader>
-        <CardContent>
-          <div className="h-64">
-            <Line data={chartData} options={chartOptions} />
-          </div>
-        </CardContent>
-      </Card>
+        {/* Chart for Recent Trends */}
+        <Card>
+          <CardHeader>
+            <h2 className="text-xl font-semibold">Recent Trends</h2>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64">
+              <Line data={chartData} options={chartOptions} />
+            </div>
+          </CardContent>
+        </Card>
 
-      {/* Health Tips */}
-      <Card>
-        <CardHeader>
-          <h2 className="text-xl font-semibold">Health Tips</h2>
-        </CardHeader>
-        <CardContent>
-          <ul className="list-disc pl-4 space-y-1">
-            {healthTips.map((tip, index) => (
-              <li key={index}>{tip}</li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-    </div>
+        {/* Health Tips */}
+        <Card>
+          <CardHeader>
+            <h2 className="text-xl font-semibold">Health Tips</h2>
+          </CardHeader>
+          <CardContent>
+            <ul className="list-disc pl-4 space-y-1">
+              {healthTips.map((tip, index) => (
+                <li key={index}>{tip}</li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </div>
+    </>
   );
 };
 

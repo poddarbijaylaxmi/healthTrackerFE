@@ -1,27 +1,34 @@
 import React, { useState } from "react";
 import InputField from "../components/InputField";
-import { loginUser } from "../services/service"; // Importing the service function
+import { loginUser } from "../services/service";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null); // To handle errors
-  const [loading, setLoading] = useState(false); // To show loading spinner
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e) => {
+    navigate("/providerdashboard");
     e.preventDefault();
-    setLoading(true); // Start loading when the user submits the form
-    setError(null); // Reset error state
+    setLoading(true);
+    setError(null);
 
     const userData = { email, password };
+
     try {
-      const response = await loginUser(userData); // Call the login API
+      const response = await loginUser(userData);
       console.log("Login success:", response);
 
-      // You can redirect after a successful login, for example:
-      // navigate('/todoPage'); // If you're using React Router for navigation
+      // Redirect based on user role
+      if (response.role === "patient") {
+        navigate("/patientdashboard");
+      } else if (response.role === "provider") {
+        navigate("/providerdashboard");
+      }
 
-      // Or simply show a success message
       alert("Login successful!");
     } catch (error) {
       setError("Invalid credentials. Please try again.");
@@ -68,6 +75,19 @@ const LoginPage = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
+
+        {/* Signup Link */}
+        <div className="text-center mt-4">
+          <p className="text-sm">
+            New User?{" "}
+            <button
+              onClick={() => navigate("/signup")}
+              className="text-blue-500 underline hover:text-blue-700"
+            >
+              Click for Signup
+            </button>
+          </p>
+        </div>
       </div>
     </div>
   );
