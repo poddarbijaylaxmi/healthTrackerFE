@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const HamburgerMenu = () => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
-
+  const handleNavigation = (screen) => {
+    navigate(screen);
+  }
   return (
     <div className="relative">
       <button onClick={() => setIsOpen(!isOpen)} className="p-4 text-white">
@@ -11,8 +15,8 @@ const HamburgerMenu = () => {
       {isOpen && (
         <div className="absolute top-12 left-0 bg-black text-white shadow-md rounded-md w-48">
           <ul>
-            <li className="p-2 hover:bg-gray-700">Dashboard</li>
-            <li className="p-2 hover:bg-gray-700">My Profile</li>
+            <li className="p-2 hover:bg-gray-700" onClick={() => handleNavigation('/patientdashboard')}>Dashboard</li>
+            <li className="p-2 hover:bg-gray-700" onClick={() => handleNavigation('/profile')} >My Profile</li>
             <li className="p-2 hover:bg-gray-700">Health Insights</li>
             <li className="p-2 hover:bg-gray-700">Messages</li>
             <li className="p-2 hover:bg-gray-700">Logout</li>
