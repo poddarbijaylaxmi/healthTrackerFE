@@ -1,7 +1,16 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import LoginPage from './pages/LoginPage';
 
 const App = () => {
-  return <div className="text-blue-600">App</div>;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage/>} />
+      </Routes>
+    </Router>
+  );
 };
 
 export default App;
