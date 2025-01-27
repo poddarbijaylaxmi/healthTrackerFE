@@ -4,6 +4,7 @@ import LoginPage from "./pages/LoginPage";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 // import Dashboard from "./pages/Dashboard";
+import SignupPage from './pages/SignupPage';
 
 const App = () => {
   return (
@@ -11,7 +12,8 @@ const App = () => {
       <Home />
       <Router>
         <Routes>
-          <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
           <Route path="/" element={<LoginPage />} />
           {/* <Route path="/dashboard/:id" element={<Dashboard />} /> */}
         </Routes>
