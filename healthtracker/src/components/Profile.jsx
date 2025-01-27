@@ -3,9 +3,9 @@ import React, { useState } from "react";
 const Profile = () => {
   const [profile, setProfile] = useState({
     patientId: "12345",
-    email: "john.doe@example.com",
-    phone: "123-456-7890",
-    address: "123 Main St, Anytown, USA",
+    email: "marjitachakraborty@gmail.com",
+    phone: "9902055676",
+    address: "Bangalore, India",
   });
 
   const handleChange = (e) => {
