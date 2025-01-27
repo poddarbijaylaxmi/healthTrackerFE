@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { signUpUser } from "../services/service"; // Importing the signup service function
-import InputField from "../components/InputField"; // Reusable InputField component
+import { Link } from "react-router-dom"; // Import Link for navigation
+import { signUpUser } from "../services/service";
+import InputField from "../components/InputField";
 
 const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [roles, setRoles] = useState({ provider: false, patient: false }); // Role checkboxes
-  const [error, setError] = useState(null); // To handle errors
-  const [loading, setLoading] = useState(false); // To show loading spinner
+  const [roles, setRoles] = useState({ provider: false, patient: false });
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleRoleChange = (e) => {
     const { name, checked } = e.target;
@@ -20,8 +21,8 @@ const SignupPage = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    setLoading(true); // Start loading when the user submits the form
-    setError(null); // Reset error state
+    setLoading(true);
+    setError(null);
 
     if (!roles.provider && !roles.patient) {
       setError("Please select at least one role.");
@@ -33,21 +34,17 @@ const SignupPage = () => {
       name,
       email,
       password,
-      roles: Object.keys(roles).filter(role => roles[role]), // Filter selected roles
+      roles: Object.keys(roles).filter((role) => roles[role]),
     };
 
     try {
-      const response = await signUpUser(userData); // Call the signup API
+      const response = await signUpUser(userData);
       console.log("Signup success:", response);
-
-      // You can redirect after a successful signup, for example:
-      // navigate('/login'); // If you're using React Router for navigation
-
-      alert('Signup successful!');
+      alert("Signup successful!");
     } catch (error) {
       setError("Something went wrong. Please try again.");
     } finally {
-      setLoading(false); // Stop loading once the request is complete
+      setLoading(false);
     }
   };
 
@@ -111,17 +108,30 @@ const SignupPage = () => {
           </div>
 
           {/* Show error message if exists */}
-          {error && <p className="text-red-500 text-sm text-center mt-2">{error}</p>}
+          {error && (
+            <p className="text-red-500 text-sm text-center mt-2">{error}</p>
+          )}
 
           {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-200"
-            disabled={loading} // Disable button while loading
+            disabled={loading}
           >
             {loading ? "Signing up..." : "Sign Up"}
           </button>
         </form>
+
+        {/* Link to Login Page */}
+        <p className="text-center mt-4 text-sm">
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            className="text-blue-500 hover:underline transition duration-200"
+          >
+            Log in here
+          </Link>
+        </p>
       </div>
     </div>
   );
