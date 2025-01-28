@@ -54,4 +54,3 @@ Frontend: React.js, Tailwind CSS
 Backend: Node.js, Express
 Database: MongoDB
 Charting: Chart.js or Recharts
-This HLD provides a comprehensive overview of the patient dashboard. If you need more details or have any specific requirements, feel free to ask!
